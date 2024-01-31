@@ -1,0 +1,61 @@
+{% extends 'user/base.html' %}
+
+{% block title %} Cart Ordering... {% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 shadow border">
+            <div class="row mt-2">
+                {% for i in pdata %}
+                <div class="col-lg-6 shadow border">
+                    <figure>
+                        <img src="{{i.image.url}}" alt="image" height="300" width="100%">
+                    </figure>
+                    <figcaption class="ml1">
+                        <h5>
+                            Name : {{i.pname}}
+                        </h5>
+                        <h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4z" />
+                            </svg>
+                            {{i.price}}
+                        </h4>
+                        <p>
+                            <span class="text-danger">Delivery on </span> : <span class="text-primary">{{date}}</span>
+                        </p>
+                    </figcaption>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-4 ">
+            {% for i in adata %}
+            <div class="shadow border py-3 px-3">
+                <h5>Name : {{i.name}}</h5>
+                <p>
+                    <span>{{i.flat}}</span>,
+                    <span>{{i.landmark}}</span>,
+                    <span>{{i.city}}</span>,
+                    <span>{{i.state}}</span>,
+                    <span>{{i.pincode}}</span>
+                </p>
+                <p>
+                    <strong>Contact : {{i.contact}}</strong><br>
+                    <strong>Alternate Contact : {{i.contactA}}</strong>
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <a href="{% url 'cartpay' aid %}" class="btn btn-danger m-3">Order Confirm</a>
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        .s {
+            background-color: #a674d5;
+            color: antiquewhite;
+            text-align: center;
+        }
+
+        h3 {
+            color: rgb(0, 255, 8);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 ">
+        {% if messages %}
+        {% for message in messages %}
+        <h3>{{message}}</h3>
+        {% endfor %}
+        {% endif %}
+        <div class="row ">
+            <div class="col-lg-8 offset-2 shadow border">
+                <div class="s mt-3">
+                    <h1>Login To Petstore</h1>
+                    <h3>Admin Login As a Trader</h3>
+                </div>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    username : <input type="text" name="uname" class="form-control">
+                    Password : <input type="password" name="password" class="form-control">
+                    <input type="submit" class="btn btn-success mb-3 mt-3" value="Login">
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
